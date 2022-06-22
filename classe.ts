@@ -27,14 +27,14 @@ class Tv {
   brand: string;
   size: number;
   resolution: number;
-  connections: string;
-  connectedTo: any;
+  connections: string[];
+  connectedTo?: string;
 
   constructor(
     brand: string,
     size: number,
     resolution: number,
-    connections: string,
+    connections: string[],
   ) {
     this.brand = brand;
     this.size = size,
@@ -43,7 +43,7 @@ class Tv {
   }
 
   // Métodos:
-  turnOn() {
+  turnOn():void {
     console.log(this.brand);
     console.log(this.size);
     console.log(this.resolution);
