@@ -33,37 +33,46 @@ class Student {
     this._name = value;
   }
 
-  get examsGrades(): number[] {
-    return this.examsGrades;
+  get examGrades(): number[] {
+    return this.examGrades;
   }
 
-  set examsGrades(value: number[]) {
+  set examGrades(value: number[]) {
     if(value.length > 4) {
       throw new Error('A pessoa estudante só pode possuir 4 notas de provas');
     }
-    this.examsGrades = value;
+    this.examGrades = value;
   }
 
-  get worksGrades(): number[] {
-    return this.worksGrades;
+  get workGrades(): number[] {
+    return this.workGrades;
   }
 
-  set worksGrades(value: number[]) {
+  set workGrades(value: number[]) {
     if(value.length > 2) {
       throw new Error('A pessoa estudante só pode possuir 2 notas de trabalhos');
     }
-    this.worksGrades = value;
+    this.workGrades = value;
   }
 
-  sumGrades() {
+  sumGrades(): number {
+    return [...this._examGrades, ...this.workGrades]
+      .reduce((acc, curr) => acc + curr)
+  }
 
+  sumAverageGrades() {
+    const allGrades = [...this._examGrades
+      , ...this.workGrades];
+    return allGrades
+      .reduce((a, b) => a + b)/allGrades.length
   }
 }
 
 const personOne = new Student('202001011', 'Maria da Silva');
 
+personOne.examGrades = [25, 20, 23, 23];
+personOne.workGrades = [45, 45];
+
 console.log(personOne);
-
-const personTwo = new Student('202001012', 'João da Silva');
-
-console.log(personTwo);
+console.log('Soma de todas as notas: ', personOne.sumGrades());
+console.log('Média de todas as notas: ', personOne.sumAverageGrade());
