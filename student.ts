@@ -1,3 +1,5 @@
+// Nesse exercício consolidamos o conhecimento em poo (abstração e encapsulamento) com typescript
+
 class Student {
   private _enrollment: string;
   private _name: string;
@@ -34,25 +36,25 @@ class Student {
   }
 
   get examGrades(): number[] {
-    return this.examGrades;
+    return this._examGrades;
   }
 
   set examGrades(value: number[]) {
     if(value.length > 4) {
       throw new Error('A pessoa estudante só pode possuir 4 notas de provas');
     }
-    this.examGrades = value;
+    this._examGrades = value;
   }
 
   get workGrades(): number[] {
-    return this.workGrades;
+    return this._workGrades;
   }
 
   set workGrades(value: number[]) {
     if(value.length > 2) {
       throw new Error('A pessoa estudante só pode possuir 2 notas de trabalhos');
     }
-    this.workGrades = value;
+    this._workGrades = value;
   }
 
   sumGrades(): number {
@@ -74,5 +76,11 @@ personOne.examGrades = [25, 20, 23, 23];
 personOne.workGrades = [45, 45];
 
 console.log(personOne);
-console.log('Soma de todas as notas: ', personOne.sumGrades());
-console.log('Média de todas as notas: ', personOne.sumAverageGrade());
+console.log(
+  'Soma de todas as notas: ',
+  personOne.sumGrades()
+);
+console.log(
+  'Média de todas as notas: ',
+  personOne.sumAverageGrades().toFixed(2)
+);
