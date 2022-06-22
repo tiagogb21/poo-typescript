@@ -101,6 +101,15 @@ class Order {
     }
     this._discount = value;
   }
+
+  total(): number {
+    return this._items.
+      reduce((acc, curr) => acc + curr._price, 0)
+  }
+
+  totalWithDiscount(): number {
+    return this.total()*(1 - this._discount);
+  }
 }
 
 const client = new Client('João');
@@ -112,3 +121,5 @@ const dessert = new OrderItem('Gelatina de Uva', 2.50);
 const order = new Order(client, [sandwiche, juice, dessert], 'dinheiro', 0.10);
 
 console.log(order);
+console.log('Valor normal: ', order.total());
+console.log('Valor com desconto: ', order.totalWithDiscount());
