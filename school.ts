@@ -1,4 +1,4 @@
-class Studant {
+class Student {
   private _enrollment: string;
   private _name: string;
   private _examGrades: number[];
@@ -50,7 +50,7 @@ class Studant {
 
   set worksGrades(value: number[]) {
     if(value.length > 2) {
-      throw new Error('A pessoa estudante só pode possuir 2 notas de provas');
+      throw new Error('A pessoa estudante só pode possuir 2 notas de trabalhos');
     }
     this.worksGrades = value;
   }
@@ -59,3 +59,11 @@ class Studant {
 
   }
 }
+
+const personOne = new Student('202001011', 'Maria da Silva');
+
+console.log(personOne);
+
+const personTwo = new Student('202001012', 'João da Silva');
+
+console.log(personTwo);
