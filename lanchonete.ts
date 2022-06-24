@@ -104,7 +104,7 @@ class Order {
 
   total(): number {
     return this._items.
-      reduce((acc, curr) => acc + curr._price, 0)
+      reduce((acc, curr) => acc + curr.price, 0)
   }
 
   totalWithDiscount(): number {
